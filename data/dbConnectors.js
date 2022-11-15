@@ -1,32 +1,52 @@
-import mongoose, { connect } from "mongoose";
+import mongoose from "mongoose";
+// import { Sequelize, DataTypes } from 'sequelize';
+// import _ from 'lodash';
+// import casual from 'casual';
 
-//Mongoose connection
+// Mongo connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/widgets', {
     useNewUrlParser: true
 });
 
 const widgetSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String
     },
-    description:{
-        type: Number
-    },
-    price:{
-        type: Number
-    },
-    soldout:{
+    description: {
         type: String
     },
-    inventory:{
+    price: {
         type: Number
     },
-    stores:{
+    soldout: {
+        type: String
+    },
+    inventory: {
+        type: String
+    },
+    stores: {
         type: Array
     }
 });
 
 const Widgets = mongoose.model('widgets', widgetSchema);
 
-export {Widgets};
+// sqlite connection
+// const sequelize = new Sequelize('sqlite::memory:');
+
+// const Categories = sequelize.define('categories', {
+//     category: DataTypes.STRING,
+//     description: DataTypes.STRING,
+// });
+
+// Categories.sync({ force: true}).then(() => {
+//     _.times(5, (i) => {
+//         Categories.create({
+//             category: casual.word,
+//             description: casual.sentence,
+//         });
+//     });
+// });
+
+export { Widgets };
